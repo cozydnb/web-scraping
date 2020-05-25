@@ -1,19 +1,10 @@
 pipeline {
-  agent {
-    docker 'node:7.10-alpine'
-  }
-  stages {
-    stage('Build') {
-      steps {
-        echo 'Building..'
-        sh 'npm install'
-      }
+    agent { docker { image 'python:3.5.1' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'python --version'
+            }
+        }
     }
-    stage('Test') {
-      steps {
-        echo 'Testing..'
-        sh 'npm t'
-      }
-    }
-  }
 }
